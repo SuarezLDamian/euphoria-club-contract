@@ -15,16 +15,21 @@ async function main() {
   const [martin, juan] = await hre.ethers.getSigners();
 
   // We get the contract to deploy
-  const Ownable = await hre.ethers.getContractFactory("OwnablePractice");
-  const ownable = await Ownable.deploy(martin.address);
+  const EuphoriaClub = await hre.ethers.getContractFactory("EuphoriaClub");
+  const euphoriaClub = await EuphoriaClub.deploy();
 
-  await ownable.deployed();
+  await euphoriaClub.deployed();
 
-  console.log("Ownable deployed to:", ownable.address);
-  const foo = await ownable.owner();
-  console.log("El owner es:", foo)
+  console.log("euphoriaClub deployed to:", euphoriaClub.address);
+  
+//   await euphoriaClub.setSaleActive(true)
+//   const foo = await euphoriaClub.saleActive()
+//   console.log("Venta activa?", foo)
 
-  await ownable.transferOwnership(juan.address)
+//   await euphoriaClub.setSaleActive(false)
+//   const foos = await euphoriaClub.saleActive()
+//   console.log("Venta activa?", foos)
+
 }
 
 // We recommend this pattern to be able to use async/await everywhere

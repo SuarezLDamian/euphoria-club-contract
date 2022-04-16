@@ -72,7 +72,7 @@ contract EuphoriaClub is ERC721Enumerable, Ownable {
     // Presale minting
     function mintPresale(uint256 _amount) public payable {
         uint256 supply = totalSupply();
-        require( presaleActive,                             "Sale isn't active" );
+        require( presaleActive,                             "Presale isn't active" );
         require( _amount > 0 && _amount <= MAX_MINT_PER_TX, "Can only mint between 1 and 20 tokens at once" );
         require( supply + _amount <= MAX_PRESALE_SUPPLY,    "Can't mint more than max supply" );
         require( msg.value == price * _amount,              "Wrong amount of ETH sent" );
